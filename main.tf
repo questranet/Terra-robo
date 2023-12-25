@@ -22,7 +22,7 @@ data "aws_ami" "ami" {
 
 resource "aws_instance" "instance" {
   count                         = length(var.components)
-  ami                           = var.data.aws_ami.ami.id
+  ami                           = data.aws_ami.ami.id
   instance_type                 = "t3.micro"
   vpc_security_group_ids        = ["sg-00a0f8d9e29fb1216"]
   tags = {
