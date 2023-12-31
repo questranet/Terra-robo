@@ -43,7 +43,7 @@ resource "null_resource" "set-hostname" {
   count                          = length(var.components)
   provisioner "remote-exec" {
     connection {
-      host = "element(aws_instance.instance.*.private_ip, count.index)"
+      host = element(aws_instance.instance.*.private_ip, count.index)
       user = "root"
       password = "DevOps321"
     }
